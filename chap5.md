@@ -139,3 +139,107 @@ int main() {
 }
 ```
 ![image](https://github.com/user-attachments/assets/fe39b0d4-b577-476f-a5bc-32e1b37efedc)
+
+
+7. 삼각형의 세 변의 길이를 입력받아서 삼각형의 종류를 결정하는 프로그램을 작성하라. 많은 종류 중에서 정삼각형, 이등변삼각형만 구별하여 보자.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int a, b, c;
+	printf("삼각형의 세 변을 입력하시오: ");
+	scanf("%d %d %d", &a, &b, &c);
+	if (a == b && b == c && c == a) {
+		printf("정삼각형");
+	}
+	else if (a == b || b == c || c == a) {
+		printf("이등변 삼각형");
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/4228f9e1-7628-4c77-896a-e155a59a391d)
+
+
+8. 근로 소득세를 계산하는 프로그램을 작성하여 보자. 근로 소득세율은 다음 표와 같다. 사용자가 자신의 과세 표준 금액을 입력하면 근로 소득세를 계산하여 주는 프로그램을 작성하여 보자. 여기서 주의해야 할 점이 있다. 만약 자신의 소득이 3000만원이면 소득 중에서 1000만원 이하는 8%를 적용하고 초과하는 부분은 17%의 세율이 매겨진다. 3000만원 전체에 대해ㅏ여 17%가 적용되는 것이 아니다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int  tex;
+	printf("과세 표준을 입력하시오(만원): ");
+	scanf("%d", &tex);
+
+	if (tex < 1000) {
+		tex = tex * 0.08;
+	}
+	else if (tex > 1000 && tex <= 4000) {
+		tex = (tex - 1000) * 0.17 + (1000 * 0.08);
+	}
+	else if (tex > 4000 && tex <= 8000) {
+		tex = (tex - 4000) * 0.26 + (4000 * 0.17) + (1000 * 0.08);
+	}
+	else {
+		tex = (tex - 8000) * 0.35 + (8000 * 0.26) + (4000 * 0.17) + (1000 * 0.08);
+	}
+
+	printf("소득세는 %d만원 입니다.\n", tex);
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/abe09ebe-0de5-46b5-b205-9c263ecc1d6d)
+
+
+9. 본문에서는 연속적인 if-else문을 이용하여 계산기를 작성하였다. 이번에는 switch문을 이용하여 간단한 계산기를 작성해보자. +, -, \*, / 연산을 지원한다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int a, b, res;
+	char op;
+	printf("수식을 입력하시오: ");
+	scanf("%d %c %d", &a, &op, &b);
+
+	switch(op){
+	case '+': res = a + b; printf("%d\n", res); break;
+	case '-': res = a - b; printf("%d\n", res); break;
+	case '*':res = a * b; printf("%d\n", res); break;
+	case '/':res = a / b; printf("%d\n", res); break;
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/ce5286a1-9101-4044-9cb0-9f82b96013f8)
+
+
+10. switch문을 이용하여 자신의 학점을 입력하면 학점에 대한 코멘트를 출력하는 프로그램을 작성해보자.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	char score;
+	printf("학점을 입력하세요: ");
+	scanf("%c", &score);
+
+	switch (score) {
+	case 'A': printf("아주 잘했어요!\n"); break;
+	case 'B': printf("좋습니다.\n"); break;
+	case 'C': printf("만족스럽습니다.\n"); break;
+	case 'D': printf("더 노력해보세요.\n"); break;
+	case 'F': printf("안타깝습니다.\n"); break;
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/c40e86e0-7aad-4661-9258-bd24573d5f4b)
