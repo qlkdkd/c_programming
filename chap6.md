@@ -284,3 +284,82 @@ int main() {
 }
 ```
 ![image](https://github.com/user-attachments/assets/95527c1c-cbce-4645-b753-a34610bba32e)
+
+
+15. 자동차의 연료 탱크 프로그램을 시뮬레이션해보자. 초기값이 1000리터이고 사용자가 주행을 하면 연료가 줄어든다. 반복문을 사용하여 사용자가 충전 또는 사용한 연료를 입력받아서 연료 탱크에 남아있는 연료가 10% 미만이면 경고를 출력한다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int n, add;
+	printf("초기 연료량: ");
+	scanf("%d", &n);
+
+	do {
+		printf("연료 충전은 +, 소모는 -로 입력해주세요: ");
+		scanf("%d", &add);
+		n += add;
+		printf("현재 남아있는 양은 %lf입니다.\n", (double)n);
+	} while (n >n * 0.1);
+	printf("(경고) 연료가 10%% 이하입니다.\n");
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/91538f15-fdd3-4d7b-b0e0-774010393e15)
+
+
+16. 사용자가 입력한 수가 소수인지 아닌지를 출력하는 프로그램을 작성하라. 소수는 1과 자기 자신 이외에는 약수를 가지지 않아야 한다. 약수는 %연산자를 이용하여 검사할 수 있다. 즉 i가 5의 약수이려면 i%5==0이여야 한다.
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int n, prime = 0;
+	printf("정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	for (int i = 2; i <= n; i++) {
+		if (n % i == 0) {
+			prime = 1;
+		}
+	}
+	if (prime == 1) {
+		printf("%d는 소수가 아닙니다.\n", n);
+	}
+	else {
+		printf("%d는 소수입니다.\n", n);
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/f812e382-c9a4-4fbb-a677-e3de0e93eb0c)
+
+
+17. 피타고라스의 정리는 직각삼각형에서 직각을 낀 두 변의 길이를 a, b라 하고, 빗변의 길이를 c라고 하면 $a^2+b^2=c^2$의 수식이 성립한다는 것이다. 각변의 길이가 100보다 작은 작은 삼각형 중에서 피타고라스의 정리가 성립하는 직각 삼각형은 몇 개나 있을까? 3중 반복문을 이용하여 피타고라스의 정리를 만족하는 3개의 정수를 찾도록 한다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	for (int i = 1; i < 100; i++) {
+		for (int j = 1; j < 100; j++) {
+			for (int k = 1; k < 100; k++) {
+				if (i * i + j * j == k * k) {
+					printf("%d %d %d\n", i, j, k);
+				}
+			}
+		}
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/7f9be00d-fe24-4aea-9669-0cb5cadf1c80)
+
+
+18 라스베가스에서 50달러를 가지고 도박을 하는 사람이 있다. 한 번의 도박에 1달러를 건다고 가정하자. 돈을 따거나 잃을 확률은 0.5로 동일하다고 가정하자. 도박사는 가진 돈을 다 잃거나 목표 금액인 250달러에 도달하면 도박을 중지한다. 도박사가 목표 금액에 도달하는 확률이 얼마나 되는지를 계산해보자.
