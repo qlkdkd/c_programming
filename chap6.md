@@ -196,5 +196,91 @@ int main() {
 11. 중첩 반복문을 사용하여 다음과 같이 출력하는 프로그램을 작성하여 보자.
 
 ```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
 
+int main() {
+	int n;
+	printf("정수를 입력하시오: ");
+	scanf("%d", &n);
+
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1;  j <= i; j++) {
+			printf("%d ", j);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
 ```
+![image](https://github.com/user-attachments/assets/0bc2ccd8-dd53-43dd-acf2-1ccb57663683)
+
+
+12. 컴퓨터는 막대 그래프를 그리는 데도 사용된다. 사용자로부터 1부터 50사이의 숫자 10개를 받아서 숫자만큼의 별표를 출력하는 프로그램을 작성하라. 막대는 가로로 그려지게 된다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int n;
+
+	for (int i = 0; i < 10; i++) {
+		printf("데이터를 입력하시오: ");
+		scanf("%d", &n);
+		for (int j = 0; j < n; j++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/e52fb828-6e11-4ddc-8dbb-5310247ffe87)
+
+
+13. 피보나치 수열을 계산하는 프로그램을 작성해보자. 피보나치 수열은 0과 1부터 시작하며 앞의 두 수를 더하여 뒤 수를 만든다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int n;
+	printf("몇 번째 항까지 구할까요?: ");
+	scanf("%d", &n);
+
+	int fib1 = 0, fib2 = 1, fib;
+	for (int i = 2; i <= n; i++) {
+		fib = fib1 + fib2;
+		printf("%d, ", fib);
+		fib1 = fib2;
+		fib2 = fib;
+	}
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/f2be63ec-5718-475a-8fee-e234a172afc3)
+
+
+14. $1^2+2^2+3^2+...+n^2$의 값을 계산하여 출력하여 보자
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int n, sum=0;
+	printf("n의 값을 입력하시오: ");
+	scanf("%d", &n);
+
+	for (int i = 1; i <= n; i++) {
+		sum += (i*i);
+	}
+	printf("계산 값은 %d입니다.\n", sum);
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/95527c1c-cbce-4645-b753-a34610bba32e)
