@@ -267,3 +267,99 @@ int main() {
 ![image](https://github.com/user-attachments/assets/a7e3bf68-9680-4ff4-b864-e516e3134d86)
 
 
+10. 주사위를 60000번 던져서 그 결과를 배열로 요약하여 보자. 잘 만들어진 주사위라면 하나의 면이 나올 확률은 약 1/6이 되어야 한다. 컴퓨터에서 주사위 던지기는 난수 발생 함수 rand()를 통하여 구현하라.
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+	int die[6] = { 0 };
+	int num;
+
+	printf("=========================\n");
+	printf("주사위면		빈도");
+	printf("=========================\n");
+
+	for (int i = 0; i < 60000; i++) {
+		num = rand() % 6;
+		die[num] += 1;
+	}
+
+	for (int i = 0; i < 6; i++) {
+		printf("%d		%d\n", i + 1, die[i]);
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/11b3561a-c959-41a5-89da-4a0478804f37)
+
+
+11. 1차원 배열에서 각 요소의 빈도를 계산하는 프로그램을 작성하라
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int arr[100] = { 0 };
+	int n, num;
+
+	printf("입력할 정수의 개수(100개 이내로): ");
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; i++) {
+		printf("%d번째 요소를 입력하시오: ", i);
+		scanf("%d", &num);
+		arr[num]+=1;
+	}
+
+	for (int i = 0; i < 100; i++) {
+		if (arr[i] > 0) {
+			printf("%d값은 %d번 등장\n", i, arr[i]);
+		}
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/4ea6e41a-11f2-4ee4-84ec-4868fe6c1902)
+
+
+12. 배열에서 사용자가 원하는 위치에 있는 요소를 삭제하는 프로그램을 작성하라. 요소를 삭제한 후에, 뒤에 있는 요소들을 한 칸씩 앞으로 이동하여야 한다.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int main() {
+	int arr[100];
+	int n, del, tmp;
+	printf("입력할 정수의 개수(100개 이내로): ");
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; i++) {
+		printf("%d번째 요소를 입력하시오: ", i);
+		scanf("%d", &arr[i]);
+	}
+
+	printf("삭제할 위치: ");
+	scanf("%d", &del);
+
+	for (int i = del; i < n; i++) {
+		arr[i] = arr[i + 1];
+	}
+
+	printf("새로운 배열: ");
+	for (int i = 0; i < n-1; i++) {
+		printf("%d ", arr[i]);
+	}
+
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/a5bdf63b-995b-4aa7-8df8-20dee1dbaaf2)
+
+
+13. 배열을 이용하여 간단한 극장 예약 시스템을 작성하여 보자. 아주 작은 극장이라서 좌석이 10개밖에 안 된다. 사용자가 예약을 하려고 하면 먼저 좌석 배치표를 보여준다. 즉, 예약이 끝난 좌석은 1로, 예약이 안된 좌석은 0으로 나타낸다.
