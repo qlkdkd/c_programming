@@ -133,3 +133,58 @@ int main() {
 7. 두 점 사이의 거리를 계산하는 함수를 작성하여 보자. 2차원 공간에서 두 점(x1, y1)와 (x2, y2)사이의 거리를 계산하는 dist_2d()를 작성하시오. 다음과 같은 두 점 시이의 거리를 계산하는 공식을 사용하여라
 
 $$d=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$$
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+
+double dist_2d(double x1, double y1, double x2, double y2) {
+	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}
+
+int main() {
+	double x1, y1, x2, y2;
+	printf("첫 번째 점의 좌표: ");
+	scanf("%lf %lf", &x1, &y1);
+	printf("두 번째 점의 좌표: ");
+	scanf("%lf %lf", &x2, &y2);
+
+	printf("두 점 사이의 거리: %lf\n", dist_2d(x1, y1, x2, y2));
+	return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/13982d78-cae4-45f5-8695-4dbcbd4053e4)
+
+
+8. 2차 방정식의 근을 계산하는 함수 quad_eqn()를 작성하라. quad_eqn()함수는 a, b, c를 나타내는 double형의 3개의 인수를 받는다. 판별식이 양수인 경우에만 근을 출력하라. 만약 판별식의 값이 음수이면 근이 없다는 메시지를 출력하라.
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+
+double quad_eqn(double a, double b, double c) {
+	double D= b * b - 4 * a * c;
+	if (D < 0)printf("근이 존재하지 않음\n");
+	else {
+		double x1 = (-b + sqrt(D)) / (2 * a);
+		double x2 = (-b - sqrt(D)) / (2 * a);
+		printf("첫 번째 근: %lf\n두 번째 근: %lf\n", x1, x2);
+	}
+}
+
+int main() {
+	double a, b, c;
+	printf("2차 방정식의 계수를 구하시오: ");
+	scanf("%lf %lf %lf", &a, &b, &c);
+	quad_eqn(a, b, c);
+}
+```
+![image](https://github.com/user-attachments/assets/1e0b9294-c06c-41e7-b405-66d2f53fd892)
+
+9. 난수 생성 함수를 이용하여 컴퓨터로 여러 가지 문제를 시뮬레이션하는 것은 흔히 몬테 카를로 시뮬레이션이라고 한다. 간단한 동전 던지기 게임을 시뮬레이션하여 보자. 컴퓨터가 동전을 던지고 사용자는 앞뒤를 말한다. 컴퓨터는 난수 생성 함수를 이용하여 난수를 생성한 후에 난수가 짝수이면 동전의 앞면으로 간주하고, 홀수이면 동전의 뒷면으로 간주한다. 이것을 여러 번 반복하여 승패를 기록한다.
+
+```c
+
+```
